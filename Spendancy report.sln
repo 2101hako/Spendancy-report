@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Spendancy report", "Spendancy report\Spendancy report.rptproj", "{741A6223-FCF1-40A5-94F5-ACB1556E280A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{741A6223-FCF1-40A5-94F5-ACB1556E280A}.Debug|Default.ActiveCfg = Debug
+		{741A6223-FCF1-40A5-94F5-ACB1556E280A}.Debug|Default.Build.0 = Debug
+		{741A6223-FCF1-40A5-94F5-ACB1556E280A}.Debug|Default.Deploy.0 = Debug
+		{741A6223-FCF1-40A5-94F5-ACB1556E280A}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{741A6223-FCF1-40A5-94F5-ACB1556E280A}.DebugLocal|Default.Build.0 = DebugLocal
+		{741A6223-FCF1-40A5-94F5-ACB1556E280A}.Release|Default.ActiveCfg = Release
+		{741A6223-FCF1-40A5-94F5-ACB1556E280A}.Release|Default.Build.0 = Release
+		{741A6223-FCF1-40A5-94F5-ACB1556E280A}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {485F7B1D-529F-446A-B914-C9B74364A711}
+	EndGlobalSection
+EndGlobal

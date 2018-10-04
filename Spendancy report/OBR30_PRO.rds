@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="OBR30_PRO">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=nivm330.nibe.se\OBR;Initial Catalog=OBR30_PRO</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>b1cd2046-e017-4023-baff-9cedebd8337d</DataSourceID>
+</RptDataSource>

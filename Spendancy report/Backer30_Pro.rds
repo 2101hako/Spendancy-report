@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Backer30_Pro">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=nivm330.nibe.se;Initial Catalog=Backer30_PRO</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>062f2395-081e-4102-b828-3b4e33cbd4ac</DataSourceID>
+</RptDataSource>

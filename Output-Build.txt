@@ -1,0 +1,10 @@
+﻿------ Build started: Project: Spendancy report, Configuration: Debug ------
+Skipping 'Spendancy Backer BHV.rdl'. Item is up to date.
+Build complete -- 0 errors, 0 warnings
+------ Deploy started: Project: Spendancy report, Configuration: Debug ------
+Deploying to http://nivm373/reportserver
+Deploying report '/Backer BHV/Spendency/Spendancy Backer BHV'.
+Warning : The text box ‘textbox1’ and the text box ‘Textbox25’ overlap. Overlapping report items are not supported in all renderers.
+Deploy complete -- 0 errors, 1 warnings
+========== Build: 1 succeeded or up-to-date, 0 failed, 0 skipped ==========
+========== Deploy: 1 succeeded, 0 failed, 0 skipped ==========

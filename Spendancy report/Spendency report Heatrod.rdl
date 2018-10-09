@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily" MustUnderstand="df">
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="Backer30_Pro">
       <DataSourceReference>Backer30_Pro</DataSourceReference>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>c0a0ac06-f19c-405f-9641-9881aee899cc</rd:DataSourceID>
+      <rd:DataSourceID>11564113-7710-4d5e-b7bc-40ae7d01335a</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -22,6 +22,8 @@
           </QueryParameter>
         </QueryParameters>
         <CommandText>/*
+--------  Script created bu 2101hako
+*//*
 --------  Script created bu 2101hako
 *//*
 --------  Script created bu 2101hako
@@ -43,7 +45,7 @@ select --MAX(LT.TransDate) as Invoicedate,
               sum(LT.AmountCur) as Amount, --excTax InCurr  
              LJT.CurrencyCode as [Original currency ],                                             
                                      
-            '2141' as [Nibe companyid],          
+            '2112' as [Nibe companyid],          
             C.NAME as [Nibe companyname],  V.COUNTRY as [Supplier country], 
             --'100' as [Cost center code],
              lt.DIMENSION2_ AS [Cost center code],
@@ -64,10 +66,10 @@ select --MAX(LT.TransDate) as Invoicedate,
 FROM LedgerTrans LT with (NoLock)
 
 
-  join (Select IP.LedgerAccountId from  inventPosting IP with (NoLock) where  IP.InventAccountType = 3 and IP.dataareaid = 'je1'  group by LedgerAccountId) as IPosting  on IPosting.LedgerAccountId = LT.accountNum
+  join (Select IP.LedgerAccountId from  inventPosting IP with (NoLock) where  IP.InventAccountType = 3 and IP.dataareaid = 'HE1'  group by LedgerAccountId) as IPosting  on IPosting.LedgerAccountId = LT.accountNum
 
 
-  join LedgerTable L with (NoLock) on L.accountNum = LT.accountNum and L.DATAAREAID = 'je1'
+  join LedgerTable L with (NoLock) on L.accountNum = LT.accountNum and L.DATAAREAID = 'HE1'
   join LedgerJournalTrans LJT with (NoLock) on LJT.Voucher = LT.voucher and LJT.DATAAREAID = L.DATAAREAID
        
   join VendTrans VT with (NoLock) on VT.VOUCHER = LT.VOUCHER and VT.DATAAREAID = L.DATAAREAID and VT.recid = LJT.VendTransId--tarvitaanko
@@ -194,7 +196,7 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Spendency report Jevi</Value>
+                    <Value>Spendency report Heatrod</Value>
                     <Style>
                       <FontFamily>Segoe UI Light</FontFamily>
                       <FontSize>24pt</FontSize>
@@ -207,7 +209,6 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
             </Paragraphs>
             <rd:DefaultName>textbox1</rd:DefaultName>
             <Height>0.43in</Height>
-            <Width>22in</Width>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
@@ -311,6 +312,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox2</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -349,6 +352,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox3</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -387,6 +392,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox4</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -425,6 +432,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox5</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -466,6 +475,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox6</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -504,6 +515,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox7</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -542,6 +555,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox8</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -580,6 +595,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox9</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -618,6 +635,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox10</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -656,6 +675,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox11</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -694,6 +715,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox12</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -732,6 +755,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox13</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -770,6 +795,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox14</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -808,6 +835,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox15</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -846,6 +875,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox16</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -884,6 +915,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox17</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -922,6 +955,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox18</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -960,6 +995,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox19</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -998,6 +1035,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox20</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1036,6 +1075,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox21</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1074,6 +1115,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox22</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1112,6 +1155,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox23</rd:DefaultName>
+                          <Height>0.22in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1153,6 +1198,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Invoicedate</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1189,6 +1236,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Suppliername</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1225,6 +1274,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>accountnumber</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1261,6 +1312,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>accountName</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1297,6 +1350,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Amount</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1333,6 +1388,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Original_currency_</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1369,6 +1426,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Nibe_companyid</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1405,6 +1464,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Nibe_companyname</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1441,6 +1502,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Supplier_country</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1477,6 +1540,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Cost_center_code</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1513,6 +1578,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Costcenter_name</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1549,6 +1616,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Supplier_id</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1585,6 +1654,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>invoiceID</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1621,6 +1692,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Verification_number</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1657,6 +1730,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Project_number</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1693,6 +1768,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Agreement_number</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1729,6 +1806,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Ordernumber</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1765,6 +1844,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Company_identification_number</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1801,6 +1882,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>VAT_number</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1837,6 +1920,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>PAYMTERMID</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1873,6 +1958,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>ZIPCODE</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1909,6 +1996,8 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Purchaser</rd:DefaultName>
+                          <Height>0.21in</Height>
+                          <Width>1in</Width>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1977,9 +2066,6 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
             <Top>0.43in</Top>
-            <Height>0.43in</Height>
-            <Width>22in</Width>
-            <ZIndex>1</ZIndex>
             <Style />
           </Tablix>
         </ReportItems>
@@ -2026,6 +2112,6 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
   </ReportParametersLayout>
   <Language>en-US</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>7dab3688-fc35-42b0-b7e2-7b07eff60261</rd:ReportID>
+  <rd:ReportUnitType>Invalid</rd:ReportUnitType>
+  <rd:ReportID>b7911176-ac27-45de-8d4c-734dd26a4f62</rd:ReportID>
 </Report>

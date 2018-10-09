@@ -6,7 +6,7 @@
     <DataSource Name="Backer30_Pro">
       <DataSourceReference>Backer30_Pro</DataSourceReference>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>c0a0ac06-f19c-405f-9641-9881aee899cc</rd:DataSourceID>
+      <rd:DataSourceID>f05ca748-20aa-44e5-acc5-d6610091e52f</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -22,6 +22,8 @@
           </QueryParameter>
         </QueryParameters>
         <CommandText>/*
+--------  Script created bu 2101hako
+*//*
 --------  Script created bu 2101hako
 *//*
 --------  Script created bu 2101hako
@@ -43,7 +45,7 @@ select --MAX(LT.TransDate) as Invoicedate,
               sum(LT.AmountCur) as Amount, --excTax InCurr  
              LJT.CurrencyCode as [Original currency ],                                             
                                      
-            '2141' as [Nibe companyid],          
+            '2102' as [Nibe companyid],          
             C.NAME as [Nibe companyname],  V.COUNTRY as [Supplier country], 
             --'100' as [Cost center code],
              lt.DIMENSION2_ AS [Cost center code],
@@ -64,10 +66,10 @@ select --MAX(LT.TransDate) as Invoicedate,
 FROM LedgerTrans LT with (NoLock)
 
 
-  join (Select IP.LedgerAccountId from  inventPosting IP with (NoLock) where  IP.InventAccountType = 3 and IP.dataareaid = 'je1'  group by LedgerAccountId) as IPosting  on IPosting.LedgerAccountId = LT.accountNum
+  join (Select IP.LedgerAccountId from  inventPosting IP with (NoLock) where  IP.InventAccountType = 3 and IP.dataareaid = 'nb1'  group by LedgerAccountId) as IPosting  on IPosting.LedgerAccountId = LT.accountNum
 
 
-  join LedgerTable L with (NoLock) on L.accountNum = LT.accountNum and L.DATAAREAID = 'je1'
+  join LedgerTable L with (NoLock) on L.accountNum = LT.accountNum and L.DATAAREAID = 'nb1'
   join LedgerJournalTrans LJT with (NoLock) on LJT.Voucher = LT.voucher and LJT.DATAAREAID = L.DATAAREAID
        
   join VendTrans VT with (NoLock) on VT.VOUCHER = LT.VOUCHER and VT.DATAAREAID = L.DATAAREAID and VT.recid = LJT.VendTransId--tarvitaanko
@@ -194,7 +196,7 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Spendency report Jevi</Value>
+                    <Value>Spendency report Norske Backer</Value>
                     <Style>
                       <FontFamily>Segoe UI Light</FontFamily>
                       <FontSize>24pt</FontSize>
@@ -2027,5 +2029,5 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
   <Language>en-US</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>7dab3688-fc35-42b0-b7e2-7b07eff60261</rd:ReportID>
+  <rd:ReportID>f21cf081-dc45-4b71-81a0-fc5a84bfae65</rd:ReportID>
 </Report>

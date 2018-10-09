@@ -54,6 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Report Include="Spendancy Backer BHV.rdl" />
+    <Report Include="Spendency report Backer ELC.rdl" />
+    <Report Include="Spendency report Backer FER.rdl" />
+    <Report Include="Spendency report Backer HTI.rdl" />
     <Report Include="Spendency report Backer OBR.rdl" />
     <Report Include="Spendency report Heatrod.rdl" />
     <Report Include="Spendency report Jevi.rdl" />

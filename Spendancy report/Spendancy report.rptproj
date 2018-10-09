@@ -55,6 +55,7 @@
   <ItemGroup>
     <Report Include="Spendancy Backer BHV.rdl" />
     <Report Include="Spendency report Backer OBR.rdl" />
+    <Report Include="Spendency report Jevi.rdl" />
     <Report Include="Spendency report Loval.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />

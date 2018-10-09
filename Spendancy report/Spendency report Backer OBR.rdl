@@ -39,7 +39,7 @@ dbo.LEDGERTABLE.ACCOUNTNAME,
 round(dbo.VENDINVOICEJOUR.INVOICEAMOUNT,2) AS Amount,
 
 dbo.VENDINVOICEJOUR.CURRENCYCODE AS [Original currency ],
-(SELECT '1051') AS [Nibe companyid],
+(SELECT '1053') AS [Nibe companyid],
 companyinfo.NAME AS [Nibe companyname],
 dbo.VENDTABLE.COUNTRY AS [Supplier country],
 XFL_APPROVALJOURNAL.NEWDIMENSION2_ AS [Cost center code],

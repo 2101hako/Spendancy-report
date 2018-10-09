@@ -6,7 +6,7 @@
     <DataSource Name="Backer30_Pro">
       <DataSourceReference>Backer30_Pro</DataSourceReference>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>0a879c60-a75e-4d0c-8812-6ec376e0db20</rd:DataSourceID>
+      <rd:DataSourceID>c0a0ac06-f19c-405f-9641-9881aee899cc</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -41,7 +41,7 @@ select --MAX(LT.TransDate) as Invoicedate,
               sum(LT.AmountCur) as Amount, --excTax InCurr  
              LJT.CurrencyCode as [Original currency ],                                             
                                      
-            '2120' as [Nibe companyid],          
+            '2141' as [Nibe companyid],          
             C.NAME as [Nibe companyname],  V.COUNTRY as [Supplier country], 
             --'100' as [Cost center code],
              lt.DIMENSION2_ AS [Cost center code],
@@ -60,24 +60,24 @@ select --MAX(LT.TransDate) as Invoicedate,
 
 
 FROM LedgerTrans LT with (NoLock)
-  --join inventPosting IP with (NoLock) on IP.LedgerAccountId = LT.accountNum and IP.InventAccountType = 3 and IP.dataareaid = 'lo1' 
-
-  join (Select IP.LedgerAccountId from  inventPosting IP with (NoLock) where  IP.InventAccountType = 3 and IP.dataareaid = 'lo1'  group by LedgerAccountId) as IPosting  on IPosting.LedgerAccountId = LT.accountNum
 
 
-  join LedgerTable L with (NoLock) on L.accountNum = LT.accountNum and L.DATAAREAID = 'lo1'
-  join LedgerJournalTrans LJT with (NoLock) on LJT.Voucher = LT.voucher and LJT.DATAAREAID = 'lo1'
+  join (Select IP.LedgerAccountId from  inventPosting IP with (NoLock) where  IP.InventAccountType = 3 and IP.dataareaid = 'je1'  group by LedgerAccountId) as IPosting  on IPosting.LedgerAccountId = LT.accountNum
+
+
+  join LedgerTable L with (NoLock) on L.accountNum = LT.accountNum and L.DATAAREAID = 'je1'
+  join LedgerJournalTrans LJT with (NoLock) on LJT.Voucher = LT.voucher and LJT.DATAAREAID = L.DATAAREAID
        
   join VendTrans VT with (NoLock) on VT.VOUCHER = LT.VOUCHER and VT.DATAAREAID = 'lo1' and VT.recid = LJT.VendTransId--tarvitaanko
-  Join VENDTABLE V with (NoLock) on V.ACCOUNTNUM = VT.ACCOUNTNUM  and V.DATAAREAID = 'lo1' 
-  Join VENDINVOICEJOUR VIJ with (NoLock) on VIJ.LEDGERVOUCHER = LT.voucher and V.DATAAREAID = 'lo1' 
+  Join VENDTABLE V with (NoLock) on V.ACCOUNTNUM = VT.ACCOUNTNUM  and V.DATAAREAID =L.DATAAREAID
+  Join VENDINVOICEJOUR VIJ with (NoLock) on VIJ.LEDGERVOUCHER = LT.voucher and V.DATAAREAID = L.DATAAREAID
 
   join COMPANYINFO C with (NoLock) ON C.DATAAREAID = LT.DATAAREAID
             --join empltable ET with(NoLock) ON ET.DATAAREAID = LT.DATAAREAID AND ET.EMPLID = XFL_APPROVALJOURNAL.TOBEAPPROVEDBY1
                                                                 
 
 
-where LT.TRANSDATE between @Startdate and @Enddate and LT.DATAAREAID = 'lo1' 
+where LT.TRANSDATE between @Startdate and @Enddate and LT.DATAAREAID = L.DATAAREAID
 
 group by LT.TransDate, LT.TransDate,  V.NAME, LT.accountNum, L.accountName, LJT.CurrencyCode,                                           
             C.NAME,  V.COUNTRY, V.ACCOUNTNUM, VIJ.INVOICEID, LJT.voucher,
@@ -192,7 +192,7 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Spendency report Loval</Value>
+                    <Value>Spendency report Jevi</Value>
                     <Style>
                       <FontFamily>Segoe UI Light</FontFamily>
                       <FontSize>24pt</FontSize>
@@ -220,34 +220,16 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.19792in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>1.30208in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>1.17708in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.47917in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>1.3125in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>1.53125in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>1.33333in</Width>
-                </TablixColumn>
-                <TablixColumn>
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.38542in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
@@ -262,25 +244,43 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.28125in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>1.21875in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>1.78125in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.21875in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.15625in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.34375in</Width>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1287,7 +1287,6 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
                                   <Value>=Fields!Amount.Value</Value>
                                   <Style>
                                     <FontFamily />
-                                    <Format>0.00;(0.00)</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -1977,7 +1976,7 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
             <DataSetName>DataSet1</DataSetName>
             <Top>0.43in</Top>
             <Height>0.43in</Height>
-            <Width>26.71875in</Width>
+            <Width>22in</Width>
             <ZIndex>1</ZIndex>
             <Style />
           </Tablix>
@@ -1985,7 +1984,7 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
         <Height>0.86in</Height>
         <Style />
       </Body>
-      <Width>26.71875in</Width>
+      <Width>22in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>
@@ -1998,19 +1997,17 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
   <ReportParameters>
     <ReportParameter Name="Startdate">
       <DataType>String</DataType>
-      <AllowBlank>true</AllowBlank>
       <Prompt>Startdate</Prompt>
     </ReportParameter>
     <ReportParameter Name="Enddate">
       <DataType>String</DataType>
-      <AllowBlank>true</AllowBlank>
       <Prompt>Enddate</Prompt>
     </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
+      <NumberOfColumns>2</NumberOfColumns>
+      <NumberOfRows>1</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -2028,5 +2025,5 @@ LJT.approvedBy, lt.DIMENSION2_ , lt.DATAAREAID
   <Language>en-US</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>5a99282e-e904-46ab-a8b4-8d5eec8e52e0</rd:ReportID>
+  <rd:ReportID>7dab3688-fc35-42b0-b7e2-7b07eff60261</rd:ReportID>
 </Report>

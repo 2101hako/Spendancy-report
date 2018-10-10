@@ -182,7 +182,7 @@ ORDER BY VENDINVOICEJOUR.INVOICEDATE desc
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Spendancy report Backer BHV</Value>
+                    <Value>Spendency report Backer BHV</Value>
                     <Style>
                       <FontFamily>Segoe UI Light</FontFamily>
                       <FontSize>24pt</FontSize>

@@ -21,9 +21,7 @@
             <Value>=Parameters!Enddate.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>/*
---------  Script created bu 2101hako
-*/
+        <CommandText>
 --declare @sDate as datetime
 --declare @eDate as datetime
 
@@ -60,24 +58,24 @@ select --MAX(LT.TransDate) as Invoicedate,
 
 
 FROM LedgerTrans LT with (NoLock)
-  --join inventPosting IP with (NoLock) on IP.LedgerAccountId = LT.accountNum and IP.InventAccountType = 3 and IP.dataareaid = 'lo1' 
+
 
   join (Select IP.LedgerAccountId from  inventPosting IP with (NoLock) where  IP.InventAccountType = 3 and IP.dataareaid = 'lo1'  group by LedgerAccountId) as IPosting  on IPosting.LedgerAccountId = LT.accountNum
 
 
   join LedgerTable L with (NoLock) on L.accountNum = LT.accountNum and L.DATAAREAID = 'lo1'
-  join LedgerJournalTrans LJT with (NoLock) on LJT.Voucher = LT.voucher and LJT.DATAAREAID = 'lo1'
+  join LedgerJournalTrans LJT with (NoLock) on LJT.Voucher = LT.voucher and LJT.DATAAREAID = L.DATAAREAID
        
-  join VendTrans VT with (NoLock) on VT.VOUCHER = LT.VOUCHER and VT.DATAAREAID = 'lo1' and VT.recid = LJT.VendTransId--tarvitaanko
-  Join VENDTABLE V with (NoLock) on V.ACCOUNTNUM = VT.ACCOUNTNUM  and V.DATAAREAID = 'lo1' 
-  Join VENDINVOICEJOUR VIJ with (NoLock) on VIJ.LEDGERVOUCHER = LT.voucher and V.DATAAREAID = 'lo1' 
+  join VendTrans VT with (NoLock) on VT.VOUCHER = LT.VOUCHER and VT.DATAAREAID = L.DATAAREAID and VT.recid = LJT.VendTransId--tarvitaanko
+  Join VENDTABLE V with (NoLock) on V.ACCOUNTNUM = VT.ACCOUNTNUM  and V.DATAAREAID =L.DATAAREAID
+  Join VENDINVOICEJOUR VIJ with (NoLock) on VIJ.LEDGERVOUCHER = LT.voucher and V.DATAAREAID = L.DATAAREAID
 
   join COMPANYINFO C with (NoLock) ON C.DATAAREAID = LT.DATAAREAID
             --join empltable ET with(NoLock) ON ET.DATAAREAID = LT.DATAAREAID AND ET.EMPLID = XFL_APPROVALJOURNAL.TOBEAPPROVEDBY1
                                                                 
 
 
-where LT.TRANSDATE between @Startdate and @Enddate and LT.DATAAREAID = 'lo1' 
+where LT.TRANSDATE between @Startdate and @Enddate and LT.DATAAREAID = L.DATAAREAID --'2018-09-03' AND '2018-09-05' and LT.DATAAREAID = L.DATAAREAID --
 
 group by LT.TransDate, LT.TransDate,  V.NAME, LT.accountNum, L.accountName, LJT.CurrencyCode,                                           
             C.NAME,  V.COUNTRY, V.ACCOUNTNUM, VIJ.INVOICEID, LJT.voucher,

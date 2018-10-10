@@ -23,6 +23,11 @@
         </QueryParameters>
         <CommandText>/*
 --------  Script created bu 2101hako
+*/
+/*
+--------  Script created bu 2101hako
+*//*
+--------  Script created bu 2101hako
 *//*
 --------  Script created bu 2101hako
 */
@@ -64,10 +69,10 @@ select --MAX(LT.TransDate) as Invoicedate,
 FROM LedgerTrans LT with (NoLock)
 
 
-  join (Select IP.LedgerAccountId from  inventPosting IP with (NoLock) where  IP.InventAccountType = 3 and IP.dataareaid = 'je1'  group by LedgerAccountId) as IPosting  on IPosting.LedgerAccountId = LT.accountNum
+  join (Select IP.LedgerAccountId from  inventPosting IP with (NoLock) where  IP.InventAccountType = 3 and IP.dataareaid = 'JE1'  group by LedgerAccountId) as IPosting  on IPosting.LedgerAccountId = LT.accountNum
 
 
-  join LedgerTable L with (NoLock) on L.accountNum = LT.accountNum and L.DATAAREAID = 'je1'
+  join LedgerTable L with (NoLock) on L.accountNum = LT.accountNum and L.DATAAREAID = 'JE1'
   join LedgerJournalTrans LJT with (NoLock) on LJT.Voucher = LT.voucher and LJT.DATAAREAID = L.DATAAREAID
        
   join VendTrans VT with (NoLock) on VT.VOUCHER = LT.VOUCHER and VT.DATAAREAID = L.DATAAREAID and VT.recid = LJT.VendTransId--tarvitaanko
